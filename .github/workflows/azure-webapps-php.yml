@@ -27,7 +27,7 @@ on:
 env:
   AZURE_WEBAPP_NAME: BallotOnlinePOC-tspears9\$BallotOnlinePOC-tspears9    # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: ftps://waws-prod-blu-289.ftp.azurewebsites.windows.net/site/wwwroot      # set this to the path to your web app project, defaults to the repository root
-  PHP_VERSION: 8.0.28                  # set this to the PHP version to use
+  PHP_VERSION: '8.x'                 # set this to the PHP version to use
 
 permissions:
   contents: read
@@ -42,7 +42,7 @@ jobs:
       - name: Setup PHP
         uses: tspears9/setup-php@6vRPjhQM8o4YH25G2EycXQNJEggWjjYvfJZtboD0N0bbmlcQ91apFroc8YBe
         with:
-          php-version: ${{ env.8.0.28 }}
+          php-version: ${{ env.PHP_VERSION }}
 
       - name: Check if composer.json exists
         id: check_files
@@ -82,7 +82,7 @@ jobs:
     needs: build
     environment:
       name: 'Development'
-      url: ${{ ftps://waws-prod-blu-289.ftp.azurewebsites.windows.net/site/wwwroot }}
+      url: ${{ ftp.azurewebsites.windows.net/site/wwwroot }}
 
     steps:
       - name: Download artifact from build job
