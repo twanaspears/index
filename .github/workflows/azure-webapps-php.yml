@@ -82,7 +82,7 @@ jobs:
     needs: build
     environment:
       name: 'Development'
-      url: ${{ ftp.azurewebsites.windows.net/site/wwwroot }}
+      url: ${{ https://azurewebsites.windows.net/site/wwwroot }}
 
     steps:
       - name: Download artifact from build job
